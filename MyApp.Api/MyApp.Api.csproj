@@ -366,7 +366,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58288</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://angular-mvc/api</IISUrl>
+          <IISUrl>http://angular-mvc.local/api</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
