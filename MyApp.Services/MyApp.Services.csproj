@@ -41,16 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="CustomerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Data.Models\MyApp.Data.Models.csproj">
       <Project>{bd3c901b-1ca5-4d90-b828-e0d1a7279e0c}</Project>
       <Name>MyApp.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyApp.Repository\MyApp.Repository.csproj">
+    <ProjectReference Include="..\MyApp.Data.Repository\MyApp.Data.Repository.csproj">
       <Project>{cf37f594-6f77-42b1-9893-9b090ec5652b}</Project>
-      <Name>MyApp.Repository</Name>
+      <Name>MyApp.Data.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyApp\MyApp.csproj">
       <Project>{2f223269-649a-45dc-a868-86956b4ec7af}</Project>

@@ -1,0 +1,13 @@
+﻿<div>
+    <h1>Customers</h1>
+
+    <input type="text" value="" placeholder="Search" ng-model="vm.filter" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" />
+
+    <ul ng-show="vm.customers">
+        <li ng-repeat="c in vm.customers">
+            <a ui-sref="customer({ customerId: c.id })">{{ c.displayName}}</a>
+        </li>
+    </ul>
+    <p ng-show="vm.customers.length === 0">No results</p>
+
+</div>

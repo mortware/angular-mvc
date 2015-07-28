@@ -14,7 +14,7 @@ function ApiService($http, $q, $timeout) {
     }
 
     function getUrl(controller, action) {
-        return 'http://angular-mvc/api/' + controller.toLowerCase() + '/' + action + '/';
+        return '/api/' + controller.toLowerCase() + '/' + action + '/';
     }
 
     function get(params, cache) {

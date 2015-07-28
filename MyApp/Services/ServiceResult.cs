@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Services
+namespace MyApp.Services
 {
     public abstract class ServiceResultBase
     {
@@ -29,6 +27,89 @@ namespace Services
         }
     }
 
+    /// <summary>
+    /// Represents the result of a Service action with included success/error data
+    /// </summary>
+    public class ServiceResult : ServiceResultBase
+    {
+        public string Message { get; protected set; }
+
+        /// <summary>
+        /// Success result
+        /// </summary>
+        /// <returns></returns>
+        public static ServiceResult Success(string message = "")
+        {
+            var result = new ServiceResult
+            {
+                Succeeded = true
+            };
+            return result;
+        }
+
+        /// <summary>
+        /// Failed result
+        /// </summary>
+        /// <param name="errors"></param>
+        /// <returns></returns>
+        public static ServiceResult Failed(params string[] errors)
+        {
+            if (errors.Length == 0)
+                throw new Exception("Failed result must contain an error message");
+
+            var result = new ServiceResult
+            {
+                Succeeded = false,
+                Errors = errors
+            };
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Represents the result of a Service action with included success/error data and a data payload
+    /// </summary>
+    public class ServiceResult<T> : ServiceResultBase where T : class
+    {
+        public T Data { get; protected set; }
+
+        /// <summary>
+        /// Success result
+        /// </summary>
+        /// <returns></returns>
+        public static ServiceResult<T> Success(T data)
+        {
+            var result = new ServiceResult<T>
+            {
+                Succeeded = true,
+                Data = data,
+            };
+            return result;
+        }
+
+        /// <summary>
+        /// Failed result
+        /// </summary>
+        /// <param name="errors"></param>
+        /// <returns></returns>
+        public static ServiceResult<T> Failed(params string[] errors)
+        {
+            if (errors.Length == 0)
+                throw new Exception("Failed result must contain an error message");
+
+            var result = new ServiceResult<T>
+            {
+                Succeeded = false,
+                Errors = errors,
+                Data = null
+            };
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Represents the result of a Service action with included success/error, and a collection of objects
+    /// </summary>
     public class ServiceCollectionResult<T> : ServiceResultBase
     {
         public IEnumerable<T> Data { get; protected set; }
@@ -63,80 +144,6 @@ namespace Services
             {
                 Succeeded = false,
                 Errors = errors,
-            };
-            return result;
-        }
-    }
-
-    public class ServiceResult<T> : ServiceResultBase where T : class
-    {
-        public T Data { get; protected set; }
-
-        /// <summary>
-        ///     Static success result
-        /// </summary>
-        /// <returns></returns>
-        public static ServiceResult<T> Success(T data)
-        {
-            var result = new ServiceResult<T>
-            {
-                Succeeded = true,
-                Data = data,
-            };
-            return result;
-        }
-
-        /// <summary>
-        ///     Failed helper method
-        /// </summary>
-        /// <param name="errors"></param>
-        /// <returns></returns>
-        public static ServiceResult<T> Failed(params string[] errors)
-        {
-            if (errors.Length == 0)
-                throw new Exception("Failed result must contain an error message");
-
-            var result = new ServiceResult<T>
-            {
-                Succeeded = false,
-                Errors = errors,
-                Data = null
-            };
-            return result;
-        }
-    }
-
-    public class ServiceResult : ServiceResultBase
-    {
-        public string Message { get; protected set; }
-
-        /// <summary>
-        ///     Static success result
-        /// </summary>
-        /// <returns></returns>
-        public static ServiceResult Success(string message = "")
-        {
-            var result = new ServiceResult
-            {
-                Succeeded = true
-            };
-            return result;
-        }
-
-        /// <summary>
-        ///     Failed helper method
-        /// </summary>
-        /// <param name="errors"></param>
-        /// <returns></returns>
-        public static ServiceResult Failed(params string[] errors)
-        {
-            if (errors.Length == 0)
-                throw new Exception("Failed result must contain an error message");
-
-            var result = new ServiceResult
-            {
-                Succeeded = false,
-                Errors = errors
             };
             return result;
         }

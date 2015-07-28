@@ -4,7 +4,7 @@ angular.module('app').factory('ApiService', ['$http', '$q', '$timeout', ApiServi
 
 function ApiService($http, $q, $timeout) {
 
-    var debugPause = 10; // Note: For debugging purposes only
+    var debugPause = 0; // Note: For debugging purposes only
 
     return {
         get: get,
