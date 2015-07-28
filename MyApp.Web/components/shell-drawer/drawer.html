@@ -1,0 +1,43 @@
+﻿<!-- Progress events -->
+<div>
+    <div class="toast" ng-repeat="p in vm.progress">
+        <div class="toast-content">
+            <span ng-bind-html="p.message"></span>
+        </div>
+        <div class="toast-actions" ng-if="p.dismissable">
+            <action-link label="Dismiss" action="vm.removeProgress(p.id)" icon="fa-times"></action-link>
+        </div>
+        <progressbar max="1.0" value="p.progress" ng-show="p.progress > 0" type="{{ p.type }}"></progressbar>
+    </div>
+</div>
+
+<!-- Toasts -->
+<div>
+    <div class="toast" ng-repeat="t in vm.toasts | reverse track by t.id">
+        <div class="toast-content">
+            <span>{{ t.message }}</span>
+        </div>
+        <div class="toast-actions" ng-if="t.dismissable">
+            <action-link label="Dismiss" action="vm.removeToast(t.id)" icon="fa-times"></action-link>
+        </div>
+    </div>
+</div>
+
+<!-- Error Stack -->
+<div>
+    <div class="toast" ng-if="vm.errorStack.count">
+        <div class="toast-content">
+            <span ng-if="vm.errorStack.count > 1">
+                {{ vm.errorStack.count }} errors have occurred. Click
+                <a href="" ng-click="vm.expandErrors()">Expand</a>
+                to see more.
+            </span>
+            <span ng-if="vm.errorStack.count === 1">{{ vm.errorStack.message }}</span>
+        </div>
+        <div class="toast-actions">
+            <action-link label="Expand" action="vm.expandErrors()" ng-if="vm.errorStack.count > 1"></action-link>
+            <action-link label="Dismiss All" action="vm.dismissAllErrors()" ng-if="vm.errorStack.count > 1"></action-link>
+            <action-link label="Dismiss" action="vm.dismissAllErrors()" ng-if="vm.errorStack.count === 1"></action-link>
+        </div>
+    </div>
+</div>

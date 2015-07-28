@@ -1,0 +1,18 @@
+﻿<div class="modal-header" ng-show="title">
+    <span>{{ title }}</span>
+</div>
+<div class="modal-body">
+    <p>{{ message }}</p>
+
+    <!-- Dropdown -->
+    <select class="form-control" ng-model="selectedItem.value" ng-options="i.value as i.label for i in items" ng-show="mode === 'dropdown'"></select>
+
+    <!-- List -->
+    <div class="list-group" ng-show="mode === 'list'">
+        <a href="" class="list-group-item" ng-repeat="i in items" ng-click="selectItem(i.value)" ng-class="{'active': i.value === selectedItem.value }">{{ i.label }}</a>
+    </div>
+</div>
+<div class="modal-footer" ng-if="!autoclose">
+    <button class="btn btn-primary" data-ng-click="ok()" ng-disabled="!selectedItem.value">OK</button>
+    <button class="btn btn-default" data-ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp" ng-controller="AppController as app">
+    <div ng-controller="ShellController as shell">
+        
+        <a ng-link="home">Home</a>
+        <a ng-link="user">User</a>
+
+        <div ng-viewport></div>
+    </div>
+    <script src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-new-router/dist/router.es5.js"></script>
+
+    <script src="/app/app.js"></script>
+    <script src="/components/services/services.js"></script>
+    <script src="/components/shell/shell.js"></script>
+    <script src="/components/home/home.js"></script>
+    <script src="/components/user/user.js"></script>
+</body>
+</html>

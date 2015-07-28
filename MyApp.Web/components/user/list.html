@@ -1,0 +1,13 @@
+﻿<div ng-controller="User.ListController as vm">
+    <h1>Users</h1>
+
+    <input type="text" value="" placeholder="Search" ng-model="vm.filter" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" />
+
+    <ul ng-show="vm.users">
+        <li ng-repeat="u in vm.users">
+            <a ng-link="users({id: u.id})">{{ u.displayName}}</a>
+        </li>
+    </ul>
+    <p ng-show="vm.users.length === 0">No results</p>
+
+</div>
